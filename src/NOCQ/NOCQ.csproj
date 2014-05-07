@@ -75,6 +75,7 @@
     <Compile Include="Model\Alert.cs" />
     <Compile Include="Plugins\Email\IParseRule.cs" />
     <Compile Include="Model\IAlert.cs" />
+    <Compile Include="DB\RedisQueues.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
