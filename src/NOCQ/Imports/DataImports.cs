@@ -8,7 +8,6 @@ namespace NOCQ
     {
 		[ImportMany]
 		IEnumerable<IDataImportHook> DataHooks {get; set;}
-
     }
 }
 
