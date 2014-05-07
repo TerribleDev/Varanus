@@ -17,7 +17,7 @@ namespace NOCQ.Plugins.Email
 		 int port { get; set; }
 		 bool ssl { get; set; }
 		 DateTime lastRun { get; set; }
-		List<IParseRule> parseRules{ get; set; }
+		 IEnumerable<ParseRule> parseRules{ get; set; }
 
 		public ImapInput (dynamic settings)
 		{
@@ -43,13 +43,15 @@ namespace NOCQ.Plugins.Email
 			timer.Elapsed += Execute;
 		}
 
-		public void Execute(object sender, ElapsedEventArgs args)
+		private List<Alert> getAlerts()
 		{
+			var alerts = new List<Alert> ();
+
 			using(var imap = new ImapClient(server, loginName, password, ImapClient.AuthMethods.Login, 993, true)) {
 				var msgs = imap.SearchMessages(
 					SearchCondition.Undeleted().And( 
-						SearchCondition.SentSince(new DateTime(2014, 5, 7))
-					));
+				                                SearchCondition.SentSince(new DateTime(2014, 5, 7))
+				                                ));
 
 				foreach (var msg in msgs) 
 				{
@@ -73,14 +75,21 @@ namespace NOCQ.Plugins.Email
 							Console.WriteLine ("Source: " + source);
 							Console.WriteLine("System: " + sysMatch.Value);
 							Console.WriteLine ("Service: " + servMatch.Value);
+
+							alerts.Add (new Alert () {
+								Source = source,
+								System = sysMatch.Value,
+								Service = servMatch.Value
+							});
 						}
-
-
-
-						//Console.WriteLine (system);
 					}
 				}
 			}
+		}
+
+		public void Execute(object sender, ElapsedEventArgs args)
+		{
+
 		}
 
 		public void Run()
