@@ -32,7 +32,7 @@ namespace NOCQ
 			{
 				var ts = await redis.RPop(q);
 
-				return JsonConvert.DeserializeObject<Alert>(ts);
+				return await JsonConvert.DeserializeObjectAsync<Alert>(ts);
 
 			}
 		}
