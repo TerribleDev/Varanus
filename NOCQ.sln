@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOCQ", "src\NOCQ\NOCQ.csproj", "{83651B7D-B58F-46B8-BFE2-BCC0A6C92C7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOCQ.Application", "NOCQ.Application\NOCQ.Application.csproj", "{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{83651B7D-B58F-46B8-BFE2-BCC0A6C92C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83651B7D-B58F-46B8-BFE2-BCC0A6C92C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83651B7D-B58F-46B8-BFE2-BCC0A6C92C7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = src\NOCQ\NOCQ.csproj

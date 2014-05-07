@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="NOCQ/MyClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NOCQ.Application/Program.cs">
     <Files>
-      <File FileName="NOCQ/MyClass.cs" Line="9" Column="10" />
+      <File FileName="NOCQ.Application/Program.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
