@@ -44,7 +44,7 @@ namespace NOCQ.Plugins.Email
 			using(var imap = new ImapClient(server, loginName, password, ImapClient.AuthMethods.Login, port, ssl)) {
 				var msgs = imap.SearchMessages(
 					SearchCondition.Undeleted().And( 
-						SearchCondition.SentSince(new DateTime(2000, 1, 1))
+						SearchCondition.SentSince(new DateTime(2014, 5, 7))
 					));
 
 				foreach (var msg in msgs) 

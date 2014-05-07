@@ -6,7 +6,10 @@ namespace NOCQ.Application
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+			dynamic settings = new ExpandoObject ();
+			//settings.
+
+			var email = new NOCQ.Plugins.Email.ImapInput(
 		}
 	}
 }
