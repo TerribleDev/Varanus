@@ -2,7 +2,7 @@ using System;
 
 namespace NOCQ
 {
-	public class Alert : IAlert
+	public class Alert 
     {
 		public DateTime TimeStamp {get; set;}
 		public string Source {get;set;}

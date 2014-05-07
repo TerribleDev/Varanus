@@ -9,29 +9,30 @@ namespace NOCQ
     {
 		public RedisDataase(){}
 
-		public static async Task SaveAlert(IAlert alert)
+		public static async Task SaveAlert(Alert alert, string q)
 		{
-			using (var redis = new RedisClientAsync(ConfigurationManager.AppSettings["DBQueueKey"],
+			using (var redis = new RedisClientAsync(q,
 				Convert.ToInt32(ConfigurationManager.AppSettings["Port"]),
 				Convert.ToInt32(ConfigurationManager.AppSettings["Timeout"])
 			))
 			{
-				await redis.LPush(ConfigurationManager.AppSettings["DBQueueKey"], alert);
+				await redis.LPush(q, alert);
 
 			}
 
 		}
 
-		public static async Task<Alert> GetNextAlert()
+		public static async Task<Alert> GetNextAlert(string q)
 		{
-			using (var redis = new RedisClientAsync(ConfigurationManager.AppSettings["DBQueueKey"],
+
+			using (var redis = new RedisClientAsync(q,
 				Convert.ToInt32(ConfigurationManager.AppSettings["Port"]),
 				Convert.ToInt32(ConfigurationManager.AppSettings["Timeout"])
 			))
 			{
-				var ts = await redis.RPop(ConfigurationManager.AppSettings["DBQueueKey"]);
+				var ts = await redis.RPop(q);
 
-				return JsonConvert.DeserializeObject<Alert>(ts);
+				return await JsonConvert.DeserializeObjectAsync<Alert>(ts);
 
 			}
 		}

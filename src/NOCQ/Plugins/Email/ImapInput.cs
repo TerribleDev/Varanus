@@ -19,6 +19,7 @@ namespace NOCQ.Plugins.Email
 		 DateTime lastRun { get; set; }
 		 IEnumerable<ParseRule> parseRules{ get; set; }
 
+
 		public ImapInput (dynamic settings)
 		{
 			var sets = settings as EmailSettings;
