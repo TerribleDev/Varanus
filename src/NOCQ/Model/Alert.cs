@@ -4,7 +4,6 @@ namespace NOCQ
 {
 	public class Alert : IAlert
     {
-
 		public DateTime TimeStamp {get; set;}
 		public string Source {get;set;}
 		public string System {get;set;}
