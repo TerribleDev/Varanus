@@ -2,6 +2,7 @@ using System;
 using System.Timers;
 using AE.Net.Mail;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NOCQ.Plugins.Email
 {
@@ -24,22 +25,18 @@ namespace NOCQ.Plugins.Email
 			if (sets.Username == null
 				|| sets.Password == null
 				|| sets.Host == null
-				|| sets.Folder == null
-			    || sets.Frequency == null
-			    || sets.Port == null
-			    || sets.IsSsl == null)
+				|| sets.Folder == null)
 				throw new ArgumentException ("You are missing a required setting.");
 
-			parseRules = sets.ParseRules.Where (x => x.Enabled);
+			parseRules = sets.ParseRules.Where (x => x.Enabled).ToList();
 
-			loginName = settings.Login;
-			password = settings.Password;
-			server = settings.Server;
-			folderPath = settings.FolderPath;
+			loginName = sets.Username;
+			password = sets.Password;
+			server = sets.Host;
+			folderPath = sets.Folder;
 
-			timer = new Timer (settings.Frequency);
-
-			timer.Elapsed += Execute ();
+			timer = new Timer (sets.Frequency);
+			//timer.Elapsed += Execute ();
 		}
 
 
