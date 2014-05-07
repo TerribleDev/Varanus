@@ -17,13 +17,13 @@ namespace NOCQ.Plugins.Email
 		 int port { get; set; }
 		 bool ssl { get; set; }
 		 DateTime lastRun { get; set; }
-		 List<ParseRule> parseRules{ get; set; }
+		List<IParseRule> parseRules{ get; set; }
 
 		public ImapInput (dynamic settings)
 		{
 			var sets = settings as EmailSettings;
 
-            if (sets.GetType().GetProperty("Username") == null
+			if (sets.GetType().GetProperty("Username") == null
                 || sets.GetType().GetProperty("Password") == null
                 || sets.GetType().GetProperty("Host") == null
                 || sets.GetType().GetProperty("Folder") == null)

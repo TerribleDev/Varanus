@@ -2,25 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="src/NOCQ/Plugins/Email/ImapInput.cs">
     <Files>
-      <File FileName="src/NOCQ/Plugins/Email/EmailSettings.cs" Line="15" Column="16" />
-      <File FileName="src/NOCQ/Plugins/Email/ImapInput.cs" Line="68" Column="31" />
+      <File FileName="src/NOCQ/DB/RedisDataase.cs" Line="10" Column="6" />
+      <File FileName="src/NOCQ/Plugins/Email/ImapInput.cs" Line="9" Column="24" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="NOCQ" expanded="True">
-            <Node name="Extensability" expanded="True" />
-            <Node name="Imports" expanded="True" />
-            <Node name="Plugins" expanded="True">
-              <Node name="Email" expanded="True" />
-            </Node>
-          </Node>
-          <Node name="NOCQ.Application" expanded="True" selected="True">
-            <Node name="References" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
