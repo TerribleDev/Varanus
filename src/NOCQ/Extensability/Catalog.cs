@@ -12,7 +12,6 @@ namespace NOCQ
         public Catalog()
         {
 			Container.ComposeParts(this);
-
         }
     }
 }
