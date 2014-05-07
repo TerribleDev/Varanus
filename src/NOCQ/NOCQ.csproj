@@ -60,6 +60,7 @@
     <Compile Include="Plugins\Email\EmailSettings.cs" />
     <Compile Include="Imports\IDataImportHook.cs" />
     <Compile Include="Imports\DataImports.cs" />
+    <Compile Include="Plugins\Email\ParseRule.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -14,7 +14,7 @@ namespace NOCQ.Plugins.Email
 		private int port { get; set; }
 		private bool ssl { get; set; }
 		private DateTime lastRun { get; set; }
-
+		private IEnumerable<ParseRule> parseRules{ get; set; }
 
 		public ImapInput (dynamic settings)
 		{
@@ -28,6 +28,8 @@ namespace NOCQ.Plugins.Email
 			    || sets.Port == null
 			    || sets.IsSsl == null)
 				throw new ArgumentException ("You are missing a required setting.");
+
+			parseRules = sets.ParseRules.Where (x => x.Enabled);
 
 			loginName = settings.Login;
 			password = settings.Password;

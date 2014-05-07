@@ -11,6 +11,7 @@ namespace NOCQ.Plugins.Email
 		public string Folder {get;set;}
 		public bool IsSsl {get;set;}
 		public int Frequency { get; set; }
+		public IEnumerable<ParseRule> ParseRules {get;set;}
 	}
 }
 
