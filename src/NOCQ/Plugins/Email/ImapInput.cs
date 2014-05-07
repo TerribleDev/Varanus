@@ -86,11 +86,13 @@ namespace NOCQ.Plugins.Email
 					}
 				}
 			}
+
+			return alerts;
 		}
 
 		public void Execute(object sender, ElapsedEventArgs args)
 		{
-
+			var alerts = getAlerts ();
 		}
 
 		public void Run()

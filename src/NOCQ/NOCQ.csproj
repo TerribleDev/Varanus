@@ -72,7 +72,6 @@
     <Compile Include="Plugins\Email\ImapInput.cs" />
     <Compile Include="Plugins\Email\IEmailSetting.cs" />
     <Compile Include="Model\Alert.cs" />
-    <Compile Include="Model\IAlert.cs" />
     <Compile Include="DB\RedisQueues.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
