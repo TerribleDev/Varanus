@@ -4,11 +4,9 @@ using AE.Net.Mail;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-<<<<<<< HEAD
 using System.ComponentModel.Composition;
-=======
 using Newtonsoft.Json.Linq;
->>>>>>> de89a87aa5549aaa31cb301c1a98fff6336c7aeb
+
 
 namespace NOCQ.Plugins.Email
 {

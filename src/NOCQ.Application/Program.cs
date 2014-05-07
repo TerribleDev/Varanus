@@ -25,6 +25,7 @@ namespace NOCQ.Application
 				});
 
 			//RedisDatabase.SaveAlert(, "127.0.0.1", RedisQueues.Output, 6379, 3000);
+
 			// Parse the settings file
 			var json = System.IO.File.ReadAllText ("settings.json");
 			var settings = SettingsParser.Parse (json);
