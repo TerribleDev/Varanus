@@ -58,11 +58,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensability\Catalog.cs" />
-    <Compile Include="Imports\IDataImport.cs" />
     <Compile Include="Plugins\Email\ImapInput.cs" />
     <Compile Include="Plugins\Email\EmailSettings.cs" />
     <Compile Include="Imports\IDataImportHook.cs" />
     <Compile Include="Imports\DataImports.cs" />
+    <Compile Include="DB\RedisDataase.cs" />
     <Compile Include="Plugins\Email\ParseRule.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -72,6 +72,7 @@
   <ItemGroup>
     <Folder Include="Extensability\" />
     <Folder Include="Imports\" />
+    <Folder Include="DB\" />
     <Folder Include="Plugins\" />
     <Folder Include="Plugins\Email\" />
   </ItemGroup>
