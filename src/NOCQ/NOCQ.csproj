@@ -33,6 +33,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="csredis">
+      <HintPath>..\..\packages\csredis.1.4.7.1\lib\net40\csredis.dll</HintPath>
+    </Reference>
     <Reference Include="System.Composition.AttributedModel">
       <HintPath>..\..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll</HintPath>
     </Reference>
@@ -50,9 +53,6 @@
     </Reference>
     <Reference Include="AE.Net.Mail">
       <HintPath>..\..\packages\AE.Net.Mail.1.7.9.1\lib\net45\AE.Net.Mail.dll</HintPath>
-    </Reference>
-    <Reference Include="csredis">
-      <HintPath>..\..\packages\csredis.1.4.7.1\lib\net40\csredis.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
