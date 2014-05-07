@@ -50,6 +50,8 @@
     </Reference>
     <Reference Include="AE.Net.Mail">
       <HintPath>..\..\packages\AE.Net.Mail.1.7.9.1\lib\net45\AE.Net.Mail.dll</HintPath>
+    <Reference Include="csredis">
+      <HintPath>..\..\packages\csredis.1.4.7.1\lib\net40\csredis.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
