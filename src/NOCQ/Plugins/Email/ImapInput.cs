@@ -36,7 +36,7 @@ namespace NOCQ.Plugins.Email
 			folderPath = sets.Folder;
 
 			timer = new Timer (sets.Frequency);
-			timer.Elapsed += (sender,args) => Execute (sender, args);
+			timer.Elapsed += Execute;
 		}
 
 		public void Execute(object sender, ElapsedEventArgs args)
@@ -51,8 +51,7 @@ namespace NOCQ.Plugins.Email
 				{
 					var realMsg = msg.Value;
 
-					var from = realMsg.From;
-					var body = realMsg.Body;
+					Console.WriteLine ("FROM:" + realMsg.From);
 
 				}
 			}
@@ -60,11 +59,13 @@ namespace NOCQ.Plugins.Email
 
 		public void Run()
 		{
+			Console.WriteLine ("Start");
 			timer.Start ();
 		}
 
 		public void Stop()
 		{
+			Console.WriteLine ("Stop");
 			timer.Stop ();
 		}
 	}
