@@ -2,7 +2,7 @@ using System;
 
 namespace NOCQ.Plugins.Email
 {
-	public class ParseRule
+	public class ParseRule : IParseRule
 	{
 		public string Name { get; set; }
 		public bool Enabled { get; set; }

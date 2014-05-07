@@ -68,6 +68,9 @@
     <Compile Include="DB\RedisDataase.cs" />
     <Compile Include="Plugins\Email\ParseRule.cs" />
     <Compile Include="Plugins\Email\IEmailSetting.cs" />
+    <Compile Include="Model\Alert.cs" />
+    <Compile Include="Plugins\Email\IParseRule.cs" />
+    <Compile Include="Model\IAlert.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -79,5 +82,6 @@
     <Folder Include="DB\" />
     <Folder Include="Plugins\" />
     <Folder Include="Plugins\Email\" />
+    <Folder Include="Model\" />
   </ItemGroup>
 </Project>
