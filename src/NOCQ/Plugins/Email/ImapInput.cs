@@ -36,11 +36,10 @@ namespace NOCQ.Plugins.Email
 			folderPath = sets.Folder;
 
 			timer = new Timer (sets.Frequency);
-			//timer.Elapsed += Execute ();
+			timer.Elapsed += (sender,args) => Execute (sender, args);
 		}
 
-
-		public void Execute()
+		public void Execute(object sender, ElapsedEventArgs args)
 		{
 			using(var imap = new ImapClient(server, loginName, password, ImapClient.AuthMethods.Login, port, ssl)) {
 				var msgs = imap.SearchMessages(
