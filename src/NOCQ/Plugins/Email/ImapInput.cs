@@ -16,7 +16,7 @@ namespace NOCQ.Plugins.Email
 		 int port { get; set; }
 		 bool ssl { get; set; }
 		 DateTime lastRun { get; set; }
-		List<IParseRule> parseRules{ get; set; }
+		List<ParseRule> parseRules{ get; set; }
 
 		public ImapInput (dynamic settings)
 		{

@@ -9,7 +9,7 @@ namespace NOCQ
     {
 		public RedisDataase(){}
 
-		public static async Task SaveAlert(IAlert alert, string q)
+		public static async Task SaveAlert(Alert alert, string q)
 		{
 			using (var redis = new RedisClientAsync(q,
 				Convert.ToInt32(ConfigurationManager.AppSettings["Port"]),
