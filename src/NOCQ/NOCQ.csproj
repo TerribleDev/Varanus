@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensability\Catalog.cs" />
+    <Compile Include="Imports\IDataImport.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -59,5 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensability\" />
+    <Folder Include="Imports\" />
   </ItemGroup>
 </Project>
