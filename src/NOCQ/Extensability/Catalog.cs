@@ -2,17 +2,19 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition;
 using System.Reflection;
 
-namespace NOCQ
+namespace NOCQ.Extensability
 {
     public class Catalog
     {
-        static DirectoryCatalog dcatalog = new DirectoryCatalog("plugins", "*.dll");
+		//static DirectoryCatalog dcatalog = new DirectoryCatalog("plugins", "*.dll");
         static AssemblyCatalog acatalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
-        static AggregateCatalog catalog = new AggregateCatalog(dcatalog, acatalog);
-        static public CompositionContainer Container = new CompositionContainer(catalog);
-        public Catalog()
+		private static AggregateCatalog Cat = new AggregateCatalog(acatalog);
+		private static CompositionContainer _container = new CompositionContainer(Cat);
+		public CompositionContainer Container { get { return _container; } }
+		public Catalog()
         {
-			Container.ComposeParts(this);
+			_container.ComposeParts(this);
+
         }
     }
 }

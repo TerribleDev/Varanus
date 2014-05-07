@@ -73,6 +73,8 @@
     <Compile Include="Model\Alert.cs" />
     <Compile Include="DB\RedisQueues.cs" />
     <Compile Include="DB\RedisDatabase.cs" />
+    <Compile Include="Extensability\CatalogRepository.cs" />
+    <Compile Include="Imports\IDataImportMetadata.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

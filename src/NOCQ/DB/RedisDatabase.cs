@@ -5,7 +5,7 @@ using System.Configuration;
 using Newtonsoft.Json;
 namespace NOCQ
 {
-    public class RedisDatabase
+    public sealed class RedisDatabase
     {
         public RedisDatabase(){}
 

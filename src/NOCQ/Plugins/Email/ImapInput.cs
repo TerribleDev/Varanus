@@ -4,11 +4,22 @@ using AE.Net.Mail;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.ComponentModel.Composition;
 
 namespace NOCQ.Plugins.Email
 {
-	public class ImapInput
+
+	[IDataImportAttr("Email")]
+	public class ImapInput: IDataImportHook
 	{
+		public string Name
+		{
+			get
+			{
+				{return "IMAP";}
+			}
+		}
+
 		 string loginName { get; set; }
 		 string password { get; set; }
 		 string server { get; set; }

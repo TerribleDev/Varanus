@@ -6,8 +6,8 @@ namespace NOCQ
 	[Export]
     public class DataImports
     {
-		[ImportMany]
-		IEnumerable<IDataImportHook> DataHooks {get; set;}
+		[ImportMany(AllowRecomposition = true)]
+		public IEnumerable<System.Lazy<IDataImportHook,IDataImportMetadata>> DataHooks {get; set;}
     }
 }
 

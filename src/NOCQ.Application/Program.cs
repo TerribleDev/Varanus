@@ -5,31 +5,25 @@ using NOCQ.Plugins.Email;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using NOCQ.Extensability;
 namespace NOCQ.Application
 {
 	class MainClass
 	{
 		public static void Main (string[] args)
 		{
-			var list = new List<Alert>();
-			for (var i = 0; i < 3000; i++)
-			{
-				var al = new Alert()
-				{Data = "data" + Guid.NewGuid(), Runbook = "runbook", Service = "service",
-					Severity = "sev",
-					Source = "Source",
-					System = "System",
-					TimeStamp = new DateTime(2011,1,1)
-				};
-				list.Add(al);
-			}
-			list.ForEach(al => RedisDatabase.SaveAlert(al, "127.0.0.1", RedisQueues.Input, 6379, 3000));
-			for (var i = 0; i < 3000; i++)
-			{
-				var s = RedisDatabase.GetNextAlert("127.0.0.1", RedisQueues.Input, 6379, 3000);
-				Console.WriteLine(s.Data);
-			}
+			var s = RedisDatabase.GetNextAlert("127.0.0.1", RedisQueues.Input, 6379, 3000);
+
+			// process s
+			var importPlugs = CatalogRepository.GetImportPlugins();
+
+			importPlugs.ToList().ForEach(x => 
+				{
+					Task.Factory.StartNew(x.Value.Run, TaskCreationOptions.LongRunning);
+					Console.WriteLine(x.Value.Name);
+				});
+
+			//RedisDatabase.SaveAlert(, "127.0.0.1", RedisQueues.Output, 6379, 3000);
 
 			Console.ReadLine();
 		
