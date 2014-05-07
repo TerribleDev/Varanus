@@ -1,10 +1,6 @@
 using System;
 using System.Dynamic;
-<<<<<<< HEAD
 using NOCQ.Settings;
-=======
-using System.Linq;
->>>>>>> e5ed166572b47afde75d47f888768ae5b8d528f2
 using NOCQ.Plugins.Email;
 using System.Collections;
 using System.Collections.Generic;

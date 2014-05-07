@@ -123,7 +123,7 @@ namespace NOCQ.Plugins.Email
 			var alerts = getAlerts ();
 
 			foreach (var alert in alerts) {
-				RedisDataase.SaveAlert (alert, "output");
+				//RedisDatabase.SaveAlert (alert);
 			}
 		}
 
