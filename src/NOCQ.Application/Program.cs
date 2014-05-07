@@ -1,7 +1,9 @@
 using System;
 using System.Dynamic;
+using NOCQ.Settings;
 using NOCQ.Plugins.Email;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NOCQ.Application
 {
@@ -9,33 +11,19 @@ namespace NOCQ.Application
 	{
 		public static void Main (string[] args)
 		{
-			var settings = new EmailSettings ();
-			settings.Host = "imap.gmail.com";
-			settings.IsSsl = true;
-			settings.Frequency = 20;
-			settings.Username = "gwyrox@gmail.com";
+			// Parse the settings file
+			var json = System.IO.File.ReadAllText ("settings.json");
+			var settings = SettingsParser.Parse (json);
 
+			// Load the settings for the email plugin
+			var email = settings.InputPlugins.Single (x => x.Name == "Email");
+			var emailSettings = email.Settings;
 
-			Console.WriteLine ("Password: ");
-			settings.Password = Console.ReadLine ();
-			settings.Port = 993;
-			settings.Folder = "INBOX";
+			//.Create and start an email plugin instance
+			var emailPlugin = new ImapInput(emailSettings);
+			emailPlugin.Execute(null,null);
 
-			var rule = new ParseRule ();
-			rule.Name = "Nagios";
-			rule.Enabled = true;
-			rule.From = "gwyrox@gmail.com";
-			rule.Source = "Nagios";
-			rule.System = "(?<=Host: ).*";
-			rule.Service = "(?<=Service: ).*";
-			rule.Data = "(?<=Additional Info:[\\n]*).*";
-			rule.Severity = "P3";
-			rule.Runbook = "http://google.com";
-
-			settings.ParseRules = new List<ParseRule> { rule };
-
-			var email = new ImapInput (settings);
-			email.Execute (null,null);
+			Console.ReadKey ();
 		}
 	}
 }

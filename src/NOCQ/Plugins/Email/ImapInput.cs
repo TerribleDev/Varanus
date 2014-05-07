@@ -4,6 +4,7 @@ using AE.Net.Mail;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json.Linq;
 
 namespace NOCQ.Plugins.Email
 {
@@ -22,25 +23,49 @@ namespace NOCQ.Plugins.Email
 
 		public ImapInput (dynamic settings)
 		{
-			var sets = settings as EmailSettings;
-
-			if (sets.GetType().GetProperty("Username") == null
-                || sets.GetType().GetProperty("Password") == null
-                || sets.GetType().GetProperty("Host") == null
-                || sets.GetType().GetProperty("Folder") == null)
+			// Load settings from the dynamic object
+			// TODO get it to be a EmailSettings now
+			if (settings["Username"] == null
+                || settings["Password"] == null
+                || settings["Host"] == null
+                || settings["Folder"] == null)
 				throw new ArgumentException ("You are missing a required setting.");
 
-			if (sets.ParseRules != null) {
-				parseRules = sets.ParseRules.Where (x => x.Enabled).ToList ();
+			if (settings["ParseRules"] != null) {
+				var rules = new List<ParseRule> ();
+				foreach (JObject rule in settings["ParseRules"]) {
+
+				//var r = rule.Children().Value<ParseRule>();
+
+					var r = new ParseRule () {
+						Name = rule["Name"].ToString(),
+						From = rule["From"].ToString(),
+						Enabled = rule["Enabled"].ToString().Equals("true") ? true:false,
+						Source = rule["Source"].ToString(),
+						System = rule["System"].ToString(),
+						Service = rule["Service"].ToString(),
+						Severity = rule["Severity"].ToString(),
+						Data = rule["Data"].ToString()
+					};
+
+					if (r.Enabled)
+						rules.Add (r);
+				}
+
+				//var rules = settings ["ParseRules"] as List<ParseRule>;
+
+				parseRules = (IEnumerable<ParseRule>)rules.Where (x => x.Enabled).ToList ();
 			}
 
-			loginName = sets.Username;
-			password = sets.Password;
-			server = sets.Host;
-			folderPath = sets.Folder;
-			port = sets.Port;
+			loginName = settings["Username"];
+			password = settings["Password"];
+			server = settings["Host"];
+			folderPath = settings["Folder"];
+			port = settings["Port"];
+			var period = (string) settings ["Frequency"];
 
-			timer = new Timer (sets.Frequency);
+			// Set up the timer
+			timer = new Timer (Double.Parse(period));
 			timer.Elapsed += Execute;
 		}
 
@@ -49,23 +74,25 @@ namespace NOCQ.Plugins.Email
 			var alerts = new List<Alert> ();
 
 			using(var imap = new ImapClient(server, loginName, password, ImapClient.AuthMethods.Login, 993, true)) {
+				// Find all undeleted messages from today
+				// TODO We probably want to check either all and delete or since last run
 				var msgs = imap.SearchMessages(
 					SearchCondition.Undeleted().And( 
-				                                SearchCondition.SentSince(new DateTime(2014, 5, 7))
-				                                ));
+                        SearchCondition.SentSince(new DateTime(2014, 5, 7))
+                ));
 
 				foreach (var msg in msgs) 
 				{
 					var realMsg = msg.Value;
 
+					// Figure out if any enabled parse rules apply
 					var rule = parseRules.Where (x => x.From.Equals (realMsg.From.Address, StringComparison.CurrentCultureIgnoreCase));
-					//"fuc".Com
 					if (rule.Any ()) 
 					{
 						var thisRule = rule.First ();
 
+						// Email + ParseRule = Alert
 						var source = thisRule.Source;
-
 						var sysRegex = new Regex(thisRule.System);
 						var servRegex = new Regex(thisRule.Service);
 
@@ -90,17 +117,25 @@ namespace NOCQ.Plugins.Email
 			return alerts;
 		}
 
+		// Gather alerts from recent emails and throw them at redis
 		public void Execute(object sender, ElapsedEventArgs args)
 		{
 			var alerts = getAlerts ();
+
+			foreach (var alert in alerts) {
+				RedisDataase.SaveAlert (alert, "output");
+			}
 		}
 
+		// Start the timer
 		public void Run()
 		{
 			Console.WriteLine ("Start");
+			timer.Enabled = true;
 			timer.Start ();
 		}
 
+		// Stop the timer
 		public void Stop()
 		{
 			Console.WriteLine ("Stop");
