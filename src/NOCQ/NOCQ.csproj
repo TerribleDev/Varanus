@@ -58,7 +58,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Package>monodevelop</Package>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +69,6 @@
     <Compile Include="DB\RedisDataase.cs" />
     <Compile Include="Plugins\Email\ParseRule.cs" />
     <Compile Include="Plugins\Email\ImapInput.cs" />
-    <Compile Include="Plugins\Email\IEmailSetting.cs" />
     <Compile Include="Model\Alert.cs" />
     <Compile Include="DB\RedisQueues.cs" />
   </ItemGroup>
