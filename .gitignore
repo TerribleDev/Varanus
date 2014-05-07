@@ -1,0 +1,6 @@
+*.dll
+bin/
+obj/
+*.mdb
+.git/
+
