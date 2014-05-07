@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NOCQ.Plugins.Email
 {
-	public class EmailSettings
+    public class EmailSettings :IEmailSetting
 	{
 		public string Username {get;set;}
 		public string Password {get;set;}
