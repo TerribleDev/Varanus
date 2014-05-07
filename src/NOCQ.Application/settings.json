@@ -1,0 +1,37 @@
+{
+	Redis: {
+		hostname: "127.0.0.1",
+		port: "6379",
+		timeout: "1000",
+		inputQueue: "input",
+		outputQueue: "output"
+	},
+	InputPlugins: [
+		{
+			Name: "Email",
+			Settings: {
+				Host: "imap.gmail.com",
+				Username: "something that's not a real email",
+				Password: "something that's not a real password",
+				Port: "993",
+				Folder: "INBOX",
+				IsSsl: "true",
+				Frequency: "10000",
+				
+				ParseRules:[{
+					
+						Name: "Nagios",
+						Enabled: "true",
+						From: "gwyrox@gmail.com",
+						Source: "Nagios",
+						System: "(?<=Host: ).*",
+					 	Service: "(?<=Service: ).*",
+						Data: "(?<=Additional Info:[\\n]*).*",
+						Runbook: "http://google.com",
+						Severity: "P3",
+					
+				}]
+			}
+		}
+	]
+}
