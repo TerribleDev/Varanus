@@ -67,7 +67,9 @@
     <Compile Include="Imports\IDataImportHook.cs" />
     <Compile Include="Imports\DataImports.cs" />
     <Compile Include="Plugins\Email\ParseRule.cs" />
-    <Compile Include="Plugins\Email\ImapInput.cs" />
+    <Compile Include="Plugins\Email\ImapInput.cs">
+      <DependentUpon>EmailSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Alert.cs" />
     <Compile Include="DB\RedisQueues.cs" />
     <Compile Include="DB\RedisDatabase.cs" />
