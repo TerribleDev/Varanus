@@ -1,6 +1,7 @@
 using System;
 using System.Timers;
 using AE.Net.Mail;
+using System.Collections.Generic;
 
 namespace NOCQ.Plugins.Email
 {
@@ -14,7 +15,7 @@ namespace NOCQ.Plugins.Email
 		private int port { get; set; }
 		private bool ssl { get; set; }
 		private DateTime lastRun { get; set; }
-		private IEnumerable<ParseRule> parseRules{ get; set; }
+		private List<ParseRule> parseRules{ get; set; }
 
 		public ImapInput (dynamic settings)
 		{
