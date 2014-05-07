@@ -22,10 +22,10 @@ namespace NOCQ.Plugins.Email
 		{
 			var sets = settings as EmailSettings;
 
-			if (sets.Username == null
-				|| sets.Password == null
-				|| sets.Host == null
-				|| sets.Folder == null)
+            if (sets.GetType().GetProperty("Username") != null
+                || sets.GetType().GetProperty("Password") == null
+                || sets.GetType().GetProperty("Host") == null
+                || sets.GetType().GetProperty("Folder") == null)
 				throw new ArgumentException ("You are missing a required setting.");
 
 			parseRules = sets.ParseRules.Where (x => x.Enabled).ToList();
