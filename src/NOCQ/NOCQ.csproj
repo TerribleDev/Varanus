@@ -59,15 +59,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensability\Catalog.cs" />
-    <Compile Include="Plugins\Email\ImapInput.cs">
-      <DependentUpon>IEmailSetting.cs</DependentUpon>
-    </Compile>
     <Compile Include="Plugins\Email\EmailSettings.cs" />
     <Compile Include="Imports\IDataImportHook.cs" />
     <Compile Include="Imports\DataImports.cs" />
     <Compile Include="DB\RedisDataase.cs" />
     <Compile Include="Plugins\Email\ParseRule.cs" />
-    <Compile Include="Plugins\Email\IEmailSetting.cs" />
+    <Compile Include="Plugins\Email\ImapInput.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

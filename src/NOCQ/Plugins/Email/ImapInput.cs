@@ -3,6 +3,7 @@ using System.Timers;
 using AE.Net.Mail;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace NOCQ.Plugins.Email
 {
@@ -28,12 +29,15 @@ namespace NOCQ.Plugins.Email
                 || sets.GetType().GetProperty("Folder") == null)
 				throw new ArgumentException ("You are missing a required setting.");
 
-			parseRules = sets.ParseRules.Where (x => x.Enabled).ToList();
+			if (sets.ParseRules != null) {
+				parseRules = sets.ParseRules.Where (x => x.Enabled).ToList ();
+			}
 
 			loginName = sets.Username;
 			password = sets.Password;
 			server = sets.Host;
 			folderPath = sets.Folder;
+			port = sets.Port;
 
 			timer = new Timer (sets.Frequency);
 			timer.Elapsed += Execute;
@@ -41,7 +45,7 @@ namespace NOCQ.Plugins.Email
 
 		public void Execute(object sender, ElapsedEventArgs args)
 		{
-			using(var imap = new ImapClient(server, loginName, password, ImapClient.AuthMethods.Login, port, ssl)) {
+			using(var imap = new ImapClient(server, loginName, password, ImapClient.AuthMethods.Login, 993, true)) {
 				var msgs = imap.SearchMessages(
 					SearchCondition.Undeleted().And( 
 						SearchCondition.SentSince(new DateTime(2014, 5, 7))
@@ -51,8 +55,30 @@ namespace NOCQ.Plugins.Email
 				{
 					var realMsg = msg.Value;
 
-					Console.WriteLine ("FROM:" + realMsg.From);
+					var rule = parseRules.Where (x => x.From.Equals (realMsg.From.Address, StringComparison.CurrentCultureIgnoreCase));
+					//"fuc".Com
+					if (rule.Any ()) 
+					{
+						var thisRule = rule.First ();
 
+						var source = thisRule.Source;
+
+						var sysRegex = new Regex(thisRule.System);
+						var servRegex = new Regex(thisRule.Service);
+
+						var sysMatch = sysRegex.Match(realMsg.Body);
+						var servMatch = servRegex.Match(realMsg.Body);
+
+						if (sysMatch.Success && servMatch.Success) {
+							Console.WriteLine ("Source: " + source);
+							Console.WriteLine("System: " + sysMatch.Value);
+							Console.WriteLine ("Service: " + servMatch.Value);
+						}
+
+
+
+						//Console.WriteLine (system);
+					}
 				}
 			}
 		}
