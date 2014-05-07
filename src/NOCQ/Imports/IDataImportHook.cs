@@ -3,7 +3,7 @@ using System.ComponentModel.Composition;
 
 namespace NOCQ
 {
-	[Export(typeof(IDataImportHook))]
+    [InheritedExport]
 	public interface IDataImportHook
     {
 		string Name { get; set; }
