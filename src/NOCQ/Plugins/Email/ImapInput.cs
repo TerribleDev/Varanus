@@ -8,15 +8,15 @@ namespace NOCQ.Plugins.Email
 {
 	public class ImapInput
 	{
-		private string loginName { get; set; }
-		private string password { get; set; }
-		private string server { get; set; }
-		private string folderPath { get; set; }
-		private Timer timer { get; set; }
-		private int port { get; set; }
-		private bool ssl { get; set; }
-		private DateTime lastRun { get; set; }
-		private List<ParseRule> parseRules{ get; set; }
+		 string loginName { get; set; }
+		 string password { get; set; }
+		 string server { get; set; }
+		 string folderPath { get; set; }
+		 Timer timer { get; set; }
+		 int port { get; set; }
+		 bool ssl { get; set; }
+		 DateTime lastRun { get; set; }
+		 List<ParseRule> parseRules{ get; set; }
 
 		public ImapInput (dynamic settings)
 		{
