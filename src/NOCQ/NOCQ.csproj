@@ -59,6 +59,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +73,10 @@
     </Compile>
     <Compile Include="Model\Alert.cs" />
     <Compile Include="DB\RedisQueues.cs" />
+    <Compile Include="Settings\SettingsFIle.cs" />
+    <Compile Include="Settings\RedisSettings.cs" />
+    <Compile Include="Settings\SettingsParser.cs" />
+    <Compile Include="Settings\PluginSettings.cs" />
     <Compile Include="DB\RedisDatabase.cs" />
     <Compile Include="Extensability\CatalogRepository.cs" />
     <Compile Include="Imports\IDataImportMetadata.cs" />
@@ -87,5 +92,6 @@
     <Folder Include="Plugins\" />
     <Folder Include="Plugins\Email\" />
     <Folder Include="Model\" />
+    <Folder Include="Settings\" />
   </ItemGroup>
 </Project>
