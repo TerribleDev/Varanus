@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace NOCQ
+namespace NOCQ.Plugins.Email
 {
 	public interface IEmailSetting
     {
