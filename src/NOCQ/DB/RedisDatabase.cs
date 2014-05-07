@@ -9,11 +9,11 @@ namespace NOCQ
     {
         public RedisDatabase(){}
 
-        public static void SaveAlert(Alert alert, string host, string q)
+        public static void SaveAlert(Alert alert, string host, string q, int port, int timeout)
 		{
             using (var redis = new RedisClient(host,
-				Convert.ToInt32(ConfigurationManager.AppSettings["Port"]),
-                Convert.ToInt32(ConfigurationManager.AppSettings["Timeout"])
+                port,
+                timeout
 			))
 			{
                 
@@ -24,12 +24,12 @@ namespace NOCQ
 
 		}
 
-        public static Alert GetNextAlert(string host, string q )
+        public static Alert GetNextAlert(string host, string q, int port, int timeout )
 		{
 
             using (var redis = new RedisClient(host,
-				Convert.ToInt32(ConfigurationManager.AppSettings["Port"]),
-				Convert.ToInt32(ConfigurationManager.AppSettings["Timeout"])
+                port,
+                timeout
 			))
 			{
 				var ts = redis.RPop(q);
