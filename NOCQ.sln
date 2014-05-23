@@ -1,9 +1,18 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOCQ", "src\NOCQ\NOCQ.csproj", "{83651B7D-B58F-46B8-BFE2-BCC0A6C92C7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOCQ.Application", "src\NOCQ.Application\NOCQ.Application.csproj", "{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOCQ.UnitTest", "src\NOCQ.UnitTest\NOCQ.UnitTest.csproj", "{D9435B3A-C005-49C2-9C0D-B87330B006D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{37EF7652-8519-4B19-89DB-9C9916F53908}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,8 +28,18 @@ Global
 		{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF8CD7EA-76FC-4B57-B24A-52C6373A8EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9435B3A-C005-49C2-9C0D-B87330B006D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9435B3A-C005-49C2-9C0D-B87330B006D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9435B3A-C005-49C2-9C0D-B87330B006D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9435B3A-C005-49C2-9C0D-B87330B006D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = src\NOCQ.Application\NOCQ.Application.csproj
+	EndGlobalSection
+	GlobalSection(NDepend) = preSolution
+		Project = ".\NOCQ.ndproj"
 	EndGlobalSection
 EndGlobal
