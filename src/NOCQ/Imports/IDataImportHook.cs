@@ -6,7 +6,7 @@ namespace NOCQ
 
 	public interface IDataImportHook
     {
-		string Name { get; set;}
+		string Name { get; }
 		void Run();
 		void Stop();
     }

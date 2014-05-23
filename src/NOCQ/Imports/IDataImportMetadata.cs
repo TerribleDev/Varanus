@@ -12,7 +12,7 @@ namespace NOCQ
 	{
 		public string Name {get;set;}
 
-		IDataImportAttr(string name)
+		public IDataImportAttr(string name)
 			:base(typeof(IDataImportHook))
 		{
 			Name = name;
