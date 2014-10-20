@@ -4,11 +4,11 @@ namespace NOCQ.Settings
 {
 	public class RedisSettings
 	{
-		public string hostname {get;set;}
-		public string port {get;set;}
-		public string timeout{get;set;}
-		public string inputQueue{get;set;}
-		public string outputQueue{get;set;}
+		public string Hostname {get;set;}
+		public int Port {get;set;}
+		public int Timeout{get;set;}
+		public string InputQueue{get;set;}
+		public string OutputQueue{get;set;}
 	}
 }
 

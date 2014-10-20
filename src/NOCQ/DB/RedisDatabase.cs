@@ -3,36 +3,43 @@ using ctstone.Redis;
 using System.Threading.Tasks;
 using System.Configuration;
 using Newtonsoft.Json;
+using NOCQ.Settings;
+
+
 namespace NOCQ
 {
     public sealed class RedisDatabase
     {
+		private string host { get; set; }
+		private string q { get; set; }
+		private string port {get;set;}
+		private int timeout { get; set;}
         public RedisDatabase(){}
 
-        public static void SaveAlert(Alert alert, string host, string q, int port, int timeout)
+		public static void SaveAlert(Alert alert, RedisSettings setting)
 		{
-            using (var redis = new RedisClient(host,
-                port,
-                timeout
+			using (var redis = new RedisClient(setting.Hostname,
+				setting.Port,
+				setting.Timeout
 			))
 			{
                 
 
-                redis.LPush(q, JsonConvert.SerializeObject(alert));
+				redis.LPush(setting.InputQueue, JsonConvert.SerializeObject(alert));
 
 			}
 
 		}
 
-        public static Alert GetNextAlert(string host, string q, int port, int timeout )
+		public static Alert GetNextAlert(RedisSettings setting)
 		{
 
-            using (var redis = new RedisClient(host,
-                port,
-                timeout
+			using (var redis = new RedisClient(setting.Hostname,
+				setting.Port,
+				setting.Timeout
 			))
 			{
-				var ts = redis.RPop(q);
+				var ts = redis.RPop(setting.OutputQueue);
 
 				return JsonConvert.DeserializeObject<Alert>(ts);
 

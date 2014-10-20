@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{83651B7D-B58F-46B8-BFE2-BCC0A6C92C7A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>NOCQ</RootNamespace>
@@ -72,7 +70,9 @@
       <DependentUpon>EmailSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Alert.cs" />
-    <Compile Include="DB\RedisQueues.cs" />
+    <Compile Include="DB\RedisQueues.cs">
+      <DependentUpon>RedisDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings\SettingsFIle.cs" />
     <Compile Include="Settings\RedisSettings.cs" />
     <Compile Include="Settings\SettingsParser.cs" />

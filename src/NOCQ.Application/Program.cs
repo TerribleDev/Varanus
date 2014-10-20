@@ -7,13 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NOCQ.Extensability;
+using System.IO;
 namespace NOCQ.Application
 {
 	class MainClass
 	{
 		public static void Main (string[] args)
 		{
-			var s = RedisDatabase.GetNextAlert("127.0.0.1", RedisQueues.Input, 6379, 3000);
+			var s = RedisDatabase.GetNextAlert(SettingsParser.SettingsFile(File.ReadAllText(Path.Combine(".","settings.json"))));
 
 			// process s
 			var importPlugs = CatalogRepository.GetImportPlugins();
