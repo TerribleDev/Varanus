@@ -7,7 +7,6 @@ namespace NOCQ.Settings
 	public class SettingsFile
 	{
 		public RedisSettings Redis { get; set; }
-		public IEnumerable<PluginSettings> InputPlugins {get; set; }
 	}
 }
 

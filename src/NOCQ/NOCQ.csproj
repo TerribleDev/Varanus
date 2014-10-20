@@ -62,13 +62,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensability\Catalog.cs" />
-    <Compile Include="Plugins\Email\EmailSettings.cs" />
     <Compile Include="Imports\IDataImportHook.cs" />
     <Compile Include="Imports\DataImports.cs" />
-    <Compile Include="Plugins\Email\ParseRule.cs" />
-    <Compile Include="Plugins\Email\ImapInput.cs">
-      <DependentUpon>EmailSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\Alert.cs" />
     <Compile Include="DB\RedisQueues.cs">
       <DependentUpon>RedisDatabase.cs</DependentUpon>
@@ -76,10 +71,8 @@
     <Compile Include="Settings\SettingsFIle.cs" />
     <Compile Include="Settings\RedisSettings.cs" />
     <Compile Include="Settings\SettingsParser.cs" />
-    <Compile Include="Settings\PluginSettings.cs" />
     <Compile Include="DB\RedisDatabase.cs" />
     <Compile Include="Extensability\CatalogRepository.cs" />
-    <Compile Include="Imports\IDataImportMetadata.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -90,7 +83,6 @@
     <Folder Include="Imports\" />
     <Folder Include="DB\" />
     <Folder Include="Plugins\" />
-    <Folder Include="Plugins\Email\" />
     <Folder Include="Model\" />
     <Folder Include="Settings\" />
   </ItemGroup>

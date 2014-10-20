@@ -11,6 +11,7 @@ namespace NOCQ
 		public string Data {get;set;}
 		public string Runbook {get; set;}
 		public string Severity {get;set;}
+		public Guid Id {get;set;}
     }
 }
 

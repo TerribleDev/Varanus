@@ -1,43 +1,42 @@
 using System;
-using System.Dynamic;
-using NOCQ.Settings;
-using NOCQ.Plugins.Email;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using NOCQ.Extensability;
-using System.IO;
+using NOCQ.Settings;
 namespace NOCQ.Application
 {
 	class MainClass
 	{
 		public static void Main (string[] args)
 		{
-			var s = RedisDatabase.GetNextAlert(SettingsParser.Parse(File.ReadAllText(Path.Combine(".","settings.json"))).Redis);
+			//var s = RedisDatabase.GetNextAlert(SettingsParser.Parse(Path.Combine("settings.json").ToString()).Redis);
 
 			// process s
 			var importPlugs = CatalogRepository.GetImportPlugins();
 
 			importPlugs.ToList().ForEach(x => 
 				{
-					Task.Factory.StartNew(x.Value.Run, TaskCreationOptions.LongRunning);
+					//Task.Factory.StartNew(x.Value.Run, TaskCreationOptions.LongRunning);
 					Console.WriteLine(x.Value.Name);
 				});
 
 			//RedisDatabase.SaveAlert(, "127.0.0.1", RedisQueues.Output, 6379, 3000);
 
 			// Parse the settings file
-			var json = System.IO.File.ReadAllText ("settings.json");
+			var json = File.ReadAllText ("settings.json");
 			var settings = SettingsParser.Parse (json);
 
 			// Load the settings for the email plugin
-			var email = settings.InputPlugins.Single (x => x.Name == "Email");
-			var emailSettings = email.Settings;
+			//var email = settings.InputPlugins.Single (x => x.Name == "Email");
+			//var emailSettings = email.Settings;
 
 			//.Create and start an email plugin instance
-			var emailPlugin = new ImapInput(emailSettings);
-			emailPlugin.Execute(null,null);
+			//var emailPlugin = new ImapInput(emailSettings);
+			//emailPlugin.Execute(null,null);
 
 			Console.ReadKey ();
 /*

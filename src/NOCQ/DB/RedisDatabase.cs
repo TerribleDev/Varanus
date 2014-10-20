@@ -10,36 +10,39 @@ namespace NOCQ
 {
     public sealed class RedisDatabase
     {
-		private string host { get; set; }
-		private string q { get; set; }
-		private string port {get;set;}
-		private int timeout { get; set;}
-        public RedisDatabase(){}
-
-		public static void SaveAlert(Alert alert, RedisSettings setting)
+		public RedisSettings Settings { get; private set;}
+		public RedisDatabase(RedisSettings settings)
 		{
-			using (var redis = new RedisClient(setting.Hostname,
-				setting.Port,
-				setting.Timeout
+			if (settings == null)
+				throw new ArgumentNullException ("settings");
+
+			Settings = settings;
+		}
+
+		public void SaveAlert(Alert alert)
+		{
+			using (var redis = new RedisClient(Settings.Hostname,
+				Settings.Port,
+				Settings.Timeout
 			))
 			{
                 
 
-				redis.LPush(setting.InputQueue, JsonConvert.SerializeObject(alert));
+				redis.LPush(Settings.InputQueue, JsonConvert.SerializeObject(alert));
 
 			}
 
 		}
 
-		public static Alert GetNextAlert(RedisSettings setting)
+		public Alert GetNextAlert()
 		{
 
-			using (var redis = new RedisClient(setting.Hostname,
-				setting.Port,
-				setting.Timeout
+			using (var redis = new RedisClient(Settings.Hostname,
+				Settings.Port,
+				Settings.Timeout
 			))
 			{
-				var ts = redis.RPop(setting.OutputQueue);
+				var ts = redis.RPop(Settings.OutputQueue);
 
 				return JsonConvert.DeserializeObject<Alert>(ts);
 
