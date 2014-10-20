@@ -14,7 +14,7 @@ namespace NOCQ.Application
 	{
 		public static void Main (string[] args)
 		{
-			var s = RedisDatabase.GetNextAlert(SettingsParser.SettingsFile(File.ReadAllText(Path.Combine(".","settings.json"))));
+			var s = RedisDatabase.GetNextAlert(SettingsParser.Parse(File.ReadAllText(Path.Combine(".","settings.json"))).Redis);
 
 			// process s
 			var importPlugs = CatalogRepository.GetImportPlugins();
