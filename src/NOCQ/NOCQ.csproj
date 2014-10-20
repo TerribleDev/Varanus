@@ -73,6 +73,7 @@
     <Compile Include="Settings\SettingsParser.cs" />
     <Compile Include="DB\RedisDatabase.cs" />
     <Compile Include="Extensability\CatalogRepository.cs" />
+    <Compile Include="Model\ProcessContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -16,19 +16,19 @@ namespace NOCQ.Application
 			//var s = RedisDatabase.GetNextAlert(SettingsParser.Parse(Path.Combine("settings.json").ToString()).Redis);
 
 			// process s
-			var importPlugs = CatalogRepository.GetImportPlugins();
-
-			importPlugs.ToList().ForEach(x => 
-				{
-					//Task.Factory.StartNew(x.Value.Run, TaskCreationOptions.LongRunning);
-					Console.WriteLine(x.Value.Name);
-				});
-
+//			var importPlugs = CatalogRepository.GetImportPlugins();
+//
+//			importPlugs.ToList().ForEach(x => 
+//				{
+//					//Task.Factory.StartNew(x.Value.Run, TaskCreationOptions.LongRunning);
+//					Console.WriteLine(x.Value.Name);
+//				});
+//
 			//RedisDatabase.SaveAlert(, "127.0.0.1", RedisQueues.Output, 6379, 3000);
 
 			// Parse the settings file
-			var json = File.ReadAllText ("settings.json");
-			var settings = SettingsParser.Parse (json);
+			//var json = File.ReadAllText ("settings.json");
+			var settings = SettingsParser.Parse ();
 
 			// Load the settings for the email plugin
 			//var email = settings.InputPlugins.Single (x => x.Name == "Email");
